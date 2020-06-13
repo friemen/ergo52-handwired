@@ -41,11 +41,11 @@ enum custom_keycodes {
 #define CTL_PLUS   LCTL(KC_PLUS)
 #define CTL_MINUS  LCTL(KC_MINUS)
 #define APP_NUM    LT(_NUM,KC_APP)
-#define SPC_BRACK  LT(_BRACKETS, KC_SPC)
+#define BSPC_BRC   LT(_BRACKETS, KC_BSPC)
 #define PAR_LFT    LSFT(KC_9)
 #define PAR_RGT    LSFT(KC_0)
-#define BRACK_LFT  KC_LBRC
-#define BRACK_RGT  KC_RBRC
+#define BRC_LFT    KC_LBRC
+#define BRC_RGT    KC_RBRC
 #define CURLY_LFT  LSFT(KC_LBRC)
 #define CURLY_RGT  LSFT(KC_RBRC)
 #define ANGL_LFT   LSFT(KC_COMM)
@@ -60,7 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,    Q_MPOINT,  W_MWHEEL,  KC_E,      KC_R,      KC_T,      KC_Y,      KC_U,      KC_I,      KC_O,      KC_P,      KC_BSLS, \
     KC_LSFT,   KC_A,      KC_S,      KC_D,      KC_F,      KC_G,      KC_H,      KC_J,      KC_K,      KC_L,      KC_SCLN,   KC_QUOT, \
     CAPS_UML,  KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,      KC_N,      KC_M,      KC_COMM,   KC_DOT,    KC_SLSH,   KC_RSFT, \
-                                                APP_NUM,   SPC_BRACK, KC_SPC,    KC_ENT \
+                                                APP_NUM,   BSPC_BRC,  KC_SPC,    KC_ENT \
   ),
   // always activated
   [_MODS] = LAYOUT(
@@ -113,7 +113,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_BRACKETS] = LAYOUT(
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   PAR_LFT,   PAR_RGT,   _______,   _______, \
-    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   BRACK_LFT, BRACK_RGT, _______,   _______, \
+    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   BRC_LFT,   BRC_RGT,   _______,   _______, \
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   CURLY_LFT, CURLY_RGT, _______,   _______, \
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   ANGL_LFT,  ANGL_RGT,  _______,   _______, \
                                                 _______,   _______,   _______,   _______ \
