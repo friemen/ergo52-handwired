@@ -203,18 +203,18 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
   // send F13 (keycode 191) and F14 (keycode 192) when _NUM layer state changes
   // these keypresses correspond to i3 bindcode expressions
-  bool old_num = _num;
-  if (state & (1 << _NUM)) {
-    _num = true;
-  } else {
-    _num = false;
-  }
-  if (old_num != _num) {
-    if (_num) {
-      SEND_STRING(SS_LGUI(SS_TAP(X_F14)));
-    } else {
-      SEND_STRING(SS_LGUI(SS_TAP(X_F13)));
-    }
-  }
+  /* bool old_num = _num; */
+  /* if (state & (1 << _NUM)) { */
+  /*   _num = true; */
+  /* } else { */
+  /*   _num = false; */
+  /* } */
+  /* if (old_num != _num) { */
+  /*   if (_num) { */
+  /*     SEND_STRING(SS_LGUI(SS_TAP(X_F14))); */
+  /*   } else { */
+  /*     SEND_STRING(SS_LGUI(SS_TAP(X_F13))); */
+  /*   } */
+  /* } */
   return state;
 };
