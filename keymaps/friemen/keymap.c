@@ -39,28 +39,20 @@ enum custom_keycodes {
 #define SCLN_CTL   MT(MOD_RCTL, KC_SCLN)
 #define QUOT_RSFT  MT(MOD_RSFT, KC_QUOT)
 #define CTL_PLUS   LCTL(KC_PLUS)
-#define CTL_MINUS  LCTL(KC_MINUS)
+#define CTL_MINS   LCTL(KC_MINUS)
 #define APP_NUM    LT(_NUM,KC_APP)
 #define BSPC_BRC   LT(_BRACKETS, KC_BSPC)
-#define PAR_LFT    LSFT(KC_9)
-#define PAR_RGT    LSFT(KC_0)
-#define BRC_LFT    KC_LBRC
-#define BRC_RGT    KC_RBRC
-#define CURLY_LFT  LSFT(KC_LBRC)
-#define CURLY_RGT  LSFT(KC_RBRC)
-#define ANGL_LFT   LSFT(KC_COMM)
-#define ANGL_RGT   LSFT(KC_DOT)
-#define MULTIPLY   LSFT(KC_8)
-#define UNDSCR     LSFT(KC_MINS)
+#define ENT_NUM    LT(_NUM,KC_ENT)
+
 
 // ERGO52
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT(
-    KC_ESC,    KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      KC_6,      KC_7,      KC_8,      KC_9,      KC_0,      KC_BSPC, \
+    KC_GRV,    KC_EXLM,   KC_AT,     KC_HASH,   KC_DLR,    KC_PERC,   KC_CIRC,   KC_AMPR,   KC_ASTR,   KC_MINS,   KC_EQL,    KC_BSPC, \
     KC_TAB,    Q_MPOINT,  W_MWHEEL,  KC_E,      KC_R,      KC_T,      KC_Y,      KC_U,      KC_I,      KC_O,      KC_P,      KC_BSLS, \
     KC_LSFT,   KC_A,      KC_S,      KC_D,      KC_F,      KC_G,      KC_H,      KC_J,      KC_K,      KC_L,      KC_SCLN,   KC_QUOT, \
-    CAPS_UML,  KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,      KC_N,      KC_M,      KC_COMM,   KC_DOT,    KC_SLSH,   KC_RSFT, \
-                                                APP_NUM,   BSPC_BRC,  KC_SPC,    KC_ENT \
+    CAPS_UML,  KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,      KC_N,      KC_M,      KC_COMM,   KC_DOT,    KC_SLSH,   CAPS_UML,\
+                                                APP_NUM,   BSPC_BRC,  KC_SPC,    ENT_NUM \
   ),
   // always activated
   [_MODS] = LAYOUT(
@@ -72,10 +64,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_FN1] = LAYOUT(
-    KC_GRV,    KC_F1,     KC_F2,     KC_F3,     KC_F4,     KC_F5,     KC_F6,     KC_F7,     KC_F8,     KC_F9,      KC_F10,   KC_DEL,   \
-    _______,   KC_F11,    KC_F12,    _______,   _______,  OSL(_TEXT), _______,   _______,   KC_UP,     KC_PGUP,    KC_PGDN,  CTL_PLUS, \
-    _______,   _______,   _______,   _______,   _______,   _______,   KC_HOME,   KC_LEFT,   KC_DOWN,   KC_RIGHT,   KC_END,  CTL_MINUS, \
-    RESET,     _______,   _______,   _______,   KC_MPLY,   KC_MNXT,   KC_HOME,   KC_END,    KC_VOLD,   KC_VOLU,    KC_MUTE,  _______,  \
+    KC_ESC,    KC_F1,     KC_F2,     KC_F3,     KC_F4,     KC_F5,     KC_F6,     KC_F7,     KC_F8,     KC_F9,     KC_F10,    KC_DEL,   \
+    _______,   KC_F11,    KC_F12,    _______,   _______,  OSL(_TEXT), _______,   _______,   KC_UP,     KC_PGUP,   KC_PGDN,   CTL_PLUS, \
+    _______,   _______,   _______,   _______,   _______,   _______,   KC_HOME,   KC_LEFT,   KC_DOWN,   KC_RIGHT,  KC_END,    CTL_MINS, \
+    RESET,     _______,   _______,   _______,   KC_MPLY,   KC_MNXT,   KC_HOME,   KC_END,    KC_VOLD,   KC_VOLU,   KC_MUTE,   _______,  \
                                                 _______,   _______,   _______,   _______  \
   ),
 
@@ -99,23 +91,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   M_UMLU,    _______,   M_UMLO,    _______,   _______, \
     _______,   M_UMLA,    M_ESZETT,  _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
-    KC_CAPSLOCK, _______, _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
+    KC_CAPS,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
                                                 _______,   _______,   _______,   _______ \
   ),
 
   [_NUM] = LAYOUT(
-    _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_7,      KC_8,      KC_9,      KC_0,      _______, \
-    _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_4,      KC_5,      KC_6,      KC_PLUS,   MULTIPLY,\
+    _______,   KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      KC_6,      KC_7,      KC_8,      KC_9,      KC_0,      _______, \
+    _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_4,      KC_5,      KC_6,      KC_PLUS,   KC_ASTR, \
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_1,      KC_2,      KC_3,      KC_MINS,   KC_SLSH, \
-    _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_0,      KC_COMM,   KC_DOT,    KC_EQL,    UNDSCR,  \
+    _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_0,      KC_COMM,   KC_DOT,    KC_EQL,    KC_ENT, \
                                                 _______,   _______,   _______,   _______ \
   ),
 
   [_BRACKETS] = LAYOUT(
-    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   PAR_LFT,   PAR_RGT,   _______,   _______, \
-    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   BRC_LFT,   BRC_RGT,   _______,   _______, \
-    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   CURLY_LFT, CURLY_RGT, _______,   _______, \
-    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   ANGL_LFT,  ANGL_RGT,  _______,   _______, \
+    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_LPRN,   KC_RPRN,   _______,   _______, \
+    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_LBRC,   KC_RBRC,   _______,   _______, \
+    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_LCBR,   KC_RCBR,   _______,   _______, \
+    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_LT,     KC_GT,     _______,   _______, \
                                                 _______,   _______,   _______,   _______ \
   ),
 
