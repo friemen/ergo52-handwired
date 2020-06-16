@@ -21,14 +21,17 @@ enum custom_keycodes {
   M_UMLO,
   M_UMLU,
   M_ESZETT,
+  M_EURO,
+  M_POUND,
+  M_YEN,
   M_BFNBGBM,
   M_DTMS
 };
 
-
 #define CAPS_UML   OSL(_UMLAUTS)
 #define Q_MPOINT   LT(_MPOINT,KC_Q)
 #define W_MWHEEL   LT(_MWHEEL,KC_W)
+#define GRV_LSFT   MT(MOD_LSFT, KC_GRV)
 #define A_CTL      MT(MOD_LCTL, KC_A)
 #define S_GUI      MT(MOD_LGUI, KC_S)
 #define D_ALT      MT(MOD_LALT, KC_D)
@@ -48,7 +51,7 @@ enum custom_keycodes {
 // ERGO52
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT(
-    KC_GRV,    KC_EXLM,   KC_AT,     KC_HASH,   KC_DLR,    KC_PERC,   KC_CIRC,   KC_AMPR,   KC_ASTR,   KC_MINS,   KC_EQL,    KC_BSPC, \
+    KC_ESC,    KC_EXLM,   KC_AT,     KC_HASH,   KC_DLR,    KC_PERC,   KC_CIRC,   KC_AMPR,   KC_ASTR,   KC_MINS,   KC_EQL,    KC_BSPC, \
     KC_TAB,    Q_MPOINT,  W_MWHEEL,  KC_E,      KC_R,      KC_T,      KC_Y,      KC_U,      KC_I,      KC_O,      KC_P,      KC_BSLS, \
     KC_LSFT,   KC_A,      KC_S,      KC_D,      KC_F,      KC_G,      KC_H,      KC_J,      KC_K,      KC_L,      KC_SCLN,   KC_QUOT, \
     CAPS_UML,  KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,      KC_N,      KC_M,      KC_COMM,   KC_DOT,    KC_SLSH,   CAPS_UML,\
@@ -58,13 +61,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_MODS] = LAYOUT(
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
-    KC_LSFT,   A_CTL,     S_GUI,     D_ALT,     F_FN1,     _______,   _______,   J_FN1,     K_ALT,     L_GUI,     SCLN_CTL,  QUOT_RSFT, \
+    GRV_LSFT,  A_CTL,     S_GUI,     D_ALT,     F_FN1,     _______,   _______,   J_FN1,     K_ALT,     L_GUI,     SCLN_CTL,  QUOT_RSFT, \
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
                                                 _______,   _______,   _______,   _______ \
   ),
 
   [_FN1] = LAYOUT(
-    KC_ESC,    KC_F1,     KC_F2,     KC_F3,     KC_F4,     KC_F5,     KC_F6,     KC_F7,     KC_F8,     KC_F9,     KC_F10,    KC_DEL,   \
+    KC_GRV,    KC_F1,     KC_F2,     KC_F3,     KC_F4,     KC_F5,     KC_F6,     KC_F7,     KC_F8,     KC_F9,     KC_F10,    KC_DEL,   \
     _______,   KC_F11,    KC_F12,    _______,   _______,  OSL(_TEXT), _______,   _______,   KC_UP,     KC_PGUP,   KC_PGDN,   CTL_PLUS, \
     _______,   _______,   _______,   _______,   _______,   _______,   KC_HOME,   KC_LEFT,   KC_DOWN,   KC_RIGHT,  KC_END,    CTL_MINS, \
     RESET,     _______,   _______,   _______,   KC_MPLY,   KC_MNXT,   KC_HOME,   KC_END,    KC_VOLD,   KC_VOLU,   KC_MUTE,   _______,  \
@@ -89,9 +92,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_UMLAUTS] = LAYOUT(
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
-    _______,   _______,   _______,   _______,   _______,   _______,   _______,   M_UMLU,    _______,   M_UMLO,    _______,   _______, \
-    _______,   M_UMLA,    M_ESZETT,  _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
-    KC_CAPS,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
+    _______,   _______,   _______,   M_EURO,    _______,   _______,   M_YEN,     M_UMLU,    _______,   M_UMLO,    M_POUND,   _______, \
+    _______,   M_UMLA,    M_ESZETT,  KC_DLR,    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
+    KC_CAPS,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_CAPS, \
                                                 _______,   _______,   _______,   _______ \
   ),
 
@@ -147,6 +150,7 @@ void compose_umlaut(char *umlaut) {
   send_string(umlaut);
 };
 
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   /* char keycode_string[20]; */
   /* sprintf(keycode_string,"%d  ",keycode); */
@@ -174,6 +178,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case M_ESZETT:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_CAPSLOCK) SS_DELAY(50) SS_TAP(X_S) SS_TAP(X_S));
+      layer_off(_UMLAUTS);
+    }
+    return false;
+  case M_EURO:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_CAPSLOCK) SS_DELAY(50) SS_TAP(X_E) SS_TAP(X_EQL));
+      layer_off(_UMLAUTS);
+    }
+    return false;
+  case M_POUND:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_CAPSLOCK) SS_DELAY(50) SS_TAP(X_L) SS_TAP(X_MINS));
+      layer_off(_UMLAUTS);
+    }
+    return false;
+  case M_YEN:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_CAPSLOCK) SS_DELAY(50) SS_TAP(X_Y) SS_TAP(X_MINS));
       layer_off(_UMLAUTS);
     }
     return false;
