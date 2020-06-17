@@ -7,10 +7,10 @@
 enum custom_layers {
   _QWERTY = 0,
   _MODS,
+  _CAPS,
   _FN1,
   _MPOINT,
   _MWHEEL,
-  _CAPS,
   _UMLAUTS,
   _NUM,
   _BRACKETS,
@@ -37,6 +37,7 @@ enum custom_keycodes {
 #define S_GUI      MT(MOD_LGUI, KC_S)
 #define D_ALT      MT(MOD_LALT, KC_D)
 #define F_FN1      LT(_FN1, KC_F)
+#define S_F_FN1    LT(_FN1, S(KC_F))
 #define J_FN1      LT(_FN1, KC_J)
 #define K_ALT      MT(MOD_LALT, KC_K)
 #define L_GUI      MT(MOD_RGUI, KC_L)
@@ -67,6 +68,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                 _______,   _______,   _______,   _______ \
   ),
 
+  [_CAPS] = LAYOUT(
+    TG(_CAPS), _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   S(KC_MINS),_______,   _______, \
+    _______,   S(KC_Q),   S(KC_W),   S(KC_E),   S(KC_R),   S(KC_T),   S(KC_Y),   S(KC_U),   S(KC_I),   S(KC_O),   S(KC_P),   _______, \
+    _______,   S(KC_A),   S(KC_S),   S(KC_D),   S_F_FN1,   S(KC_G),   S(KC_H),   S(KC_J),   S(KC_K),   S(KC_L),   _______,   _______, \
+    _______,   S(KC_Z),   S(KC_X),   S(KC_C),   S(KC_V),   S(KC_B),   S(KC_N),   S(KC_M),   _______,   _______,   _______,   _______, \
+                                                _______,   _______,   _______,   _______ \
+  ),
+
   [_FN1] = LAYOUT(
     _______,   KC_F1,     KC_F2,     KC_F3,     KC_F4,     KC_F5,     KC_F6,     KC_F7,     KC_F8,     KC_F9,     KC_F10,    KC_DEL,   \
     TG(_CAPS), KC_F11,    KC_F12,    _______,   _______,  OSL(_TEXT), _______,   _______,   KC_UP,     KC_PGUP,   KC_PGDN,   KC_INS,   \
@@ -88,14 +97,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_WH_U,   _______,   _______,   _______, \
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_WH_L,   KC_WH_D,   KC_WH_R,   _______,   _______, \
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
-                                                _______,   _______,   _______,   _______ \
-  ),
-
-  [_CAPS] = LAYOUT(
-    TG(_CAPS), _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
-    _______,   S(KC_Q),   S(KC_W),   S(KC_E),   S(KC_R),   S(KC_T),   S(KC_Y),   S(KC_U),   S(KC_I),   S(KC_O),   S(KC_P),   _______, \
-    _______,   S(KC_A),   S(KC_S),   S(KC_D),   S(KC_F),   S(KC_G),   S(KC_H),   S(KC_J),   S(KC_K),   S(KC_L),   _______,   _______, \
-    _______,   S(KC_Z),   S(KC_X),   S(KC_C),   S(KC_V),   S(KC_B),   S(KC_N),   S(KC_M),   _______,   _______,   _______,   _______, \
                                                 _______,   _______,   _______,   _______ \
   ),
 
