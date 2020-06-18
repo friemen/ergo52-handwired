@@ -110,18 +110,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_NUM] = LAYOUT(
-    TG(_NUM),  KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      KC_6,      KC_7,      KC_8,      KC_9,      KC_0,      _______, \
+    TG(_NUM),  KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      KC_6,      KC_7,      KC_8,      KC_9,      KC_EQL,    _______, \
     TG(_NUM),  _______,   _______,   _______,   _______,   _______,   _______,   KC_4,      KC_5,      KC_6,      KC_PLUS,   KC_ASTR, \
-    _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_1,      KC_2,      KC_3,      KC_MINS,   KC_ENT,  \
-    _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_0,      KC_COMM,   KC_DOT,    KC_SLSH,   KC_EQL,  \
+    _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_1,      KC_2,      KC_3,      KC_MINS,   KC_QUOT, \
+    _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_0,      KC_COMM,   KC_DOT,    KC_SLSH,   _______,  \
                                                 _______,   _______,   _______,   _______ \
   ),
 
   [_SYM] = LAYOUT(
-    _______,   KC_EXLM,   KC_AT,     KC_HASH,   KC_DLR,    KC_PERC,   KC_CIRC,   KC_AMPR,   KC_LCBR,   KC_RCBR,   KC_TILD,   _______, \
-    _______,   _______,   KC_GRV,    KC_PIPE,   KC_HASH,   _______,   _______,   KC_HASH,   KC_LBRC,   KC_RBRC,   KC_EQL,    KC_BSLS, \
-    _______,   _______,   KC_TILD,   KC_DQUO,   KC_MINS,   _______,   _______,   KC_MINS,   KC_LPRN,   KC_RPRN,   _______,   KC_QUOT, \
-    _______,   _______,   _______,   KC_QUOT,   KC_UNDS,   _______,   _______,   KC_UNDS,   KC_LT,     KC_GT,     _______,   KC_GRV,  \
+    _______,   KC_EXLM,   KC_AT,     KC_HASH,   KC_DLR,    KC_PERC,   KC_CIRC,   KC_AMPR,   KC_LCBR,   KC_RCBR,   KC_EQL,    _______, \
+    _______,   _______,   KC_GRV,    KC_PIPE,   KC_HASH,   _______,   _______,   KC_HASH,   KC_LBRC,   KC_RBRC,   KC_PLUS,   KC_ASTR, \
+    _______,   _______,   KC_TILD,   KC_DQUO,   KC_MINS,   _______,   _______,   KC_MINS,   KC_LPRN,   KC_RPRN,   KC_MINS,   KC_QUOT, \
+    _______,   _______,   KC_BSLS,   KC_QUOT,   KC_UNDS,   _______,   _______,   KC_UNDS,   KC_LT,     KC_GT,     KC_SLSH,   _______,  \
                                                 _______,   _______,   _______,   _______ \
   ),
 
