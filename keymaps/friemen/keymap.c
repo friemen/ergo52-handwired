@@ -25,6 +25,10 @@ enum custom_keycodes {
   M_EURO,
   M_POUND,
   M_YEN,
+  M_PARA,
+  M_DEGR,
+  M_LTLT,
+  M_GTGT,
   M_BFNBGBM,
   M_DTMS
 };
@@ -102,10 +106,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_UMLAUTS] = LAYOUT(
-    TG(_UMLAUTS),_______, _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
+    TG(_UMLAUTS), M_DEGR, _______,   M_PARA,    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
     _______,   _______,   _______,   M_EURO,    _______,   _______,   M_YEN,     M_UMLU,    _______,   M_UMLO,    M_POUND,   _______, \
     _______,   M_UMLA,    M_ESZETT,  KC_DLR,    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
-    KC_CAPS,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_CAPS, \
+    KC_CAPS,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   M_LTLT,    M_GTGT,    _______,   KC_CAPS, \
                                                 _______,   _______,   _______,   _______ \
   ),
 
@@ -113,15 +117,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TG(_NUM),  KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      KC_6,      KC_7,      KC_8,      KC_9,      KC_EQL,    _______, \
     TG(_NUM),  KC_4,      KC_5,      KC_6,      _______,   _______,   _______,   KC_4,      KC_5,      KC_6,      KC_PLUS,   KC_ASTR, \
     _______,   KC_7,      KC_8,      KC_9,      _______,   _______,   _______,   KC_1,      KC_2,      KC_3,      KC_MINS,   KC_QUOT, \
-    _______,   KC_0,      _______,   _______,   _______,   _______,   _______,   KC_0,      KC_COMM,   KC_DOT,    KC_SLSH,   _______,  \
+    _______,   KC_0,      _______,   _______,   _______,   _______,   _______,   KC_0,      KC_COMM,   KC_DOT,    KC_SLSH,   _______, \
                                                 _______,   _______,   _______,   _______ \
   ),
 
   [_SYM] = LAYOUT(
     _______,   KC_EXLM,   KC_AT,     KC_HASH,   KC_DLR,    KC_PERC,   KC_CIRC,   KC_AMPR,   KC_LCBR,   KC_RCBR,   KC_EQL,    _______, \
-    _______,   _______,   KC_GRV,    KC_PIPE,   KC_HASH,   _______,   _______,   KC_HASH,   KC_LBRC,   KC_RBRC,   KC_PLUS,   KC_ASTR, \
-    _______,   _______,   KC_TILD,   KC_DQUO,   KC_MINS,   _______,   _______,   KC_MINS,   KC_LPRN,   KC_RPRN,   KC_MINS,   KC_QUOT, \
-    _______,   _______,   KC_BSLS,   KC_QUOT,   KC_UNDS,   _______,   _______,   KC_UNDS,   KC_LT,     KC_GT,     KC_SLSH,   _______,  \
+    _______,   _______,   KC_GRV,    KC_PIPE,   KC_HASH,   KC_COMM,   _______,   KC_HASH,   KC_LBRC,   KC_RBRC,   KC_PLUS,   KC_ASTR, \
+    _______,   _______,   KC_TILD,   KC_DQUO,   KC_MINS,   KC_DOT,    _______,   KC_MINS,   KC_LPRN,   KC_RPRN,   KC_MINS,   KC_QUOT, \
+    _______,   _______,   KC_BSLS,   KC_QUOT,   KC_UNDS,   KC_QUES,   _______,   KC_UNDS,   KC_LT,     KC_GT,     KC_SLSH,   _______, \
                                                 _______,   _______,   _______,   _______ \
   ),
 
@@ -162,12 +166,22 @@ void compose_umlaut(char *umlaut) {
 };
 
 
+#define COMPOSE(KC,SEQUENCE) \
+  case KC: \
+    if (record->event.pressed) { \
+      SEND_STRING(SS_TAP(X_CAPSLOCK) SS_DELAY(50) SEQUENCE); \
+      layer_off(_UMLAUTS); \
+    } \
+    return false;
+
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   /* char keycode_string[20]; */
   /* sprintf(keycode_string,"%d  ",keycode); */
   /* send_string(keycode_string); */
 
   switch (keycode) {
+    /* umlauts, currency symbols and other special characters */
   case M_UMLA:
     if (record->event.pressed) {
       compose_umlaut("a");
@@ -186,30 +200,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       layer_off(_UMLAUTS);
     }
     return false;
-  case M_ESZETT:
-    if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_CAPSLOCK) SS_DELAY(50) SS_TAP(X_S) SS_TAP(X_S));
-      layer_off(_UMLAUTS);
-    }
-    return false;
-  case M_EURO:
-    if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_CAPSLOCK) SS_DELAY(50) SS_TAP(X_E) SS_TAP(X_EQL));
-      layer_off(_UMLAUTS);
-    }
-    return false;
-  case M_POUND:
-    if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_CAPSLOCK) SS_DELAY(50) SS_TAP(X_L) SS_TAP(X_MINS));
-      layer_off(_UMLAUTS);
-    }
-    return false;
-  case M_YEN:
-    if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_CAPSLOCK) SS_DELAY(50) SS_TAP(X_Y) SS_TAP(X_MINS));
-      layer_off(_UMLAUTS);
-    }
-    return false;
+  COMPOSE(M_ESZETT, SS_TAP(X_S) SS_TAP(X_S));
+  COMPOSE(M_EURO,   SS_TAP(X_E) SS_TAP(X_EQL));
+  COMPOSE(M_POUND,  SS_TAP(X_L) SS_TAP(X_MINS));
+  COMPOSE(M_YEN,    SS_TAP(X_Y) SS_TAP(X_MINS));
+  COMPOSE(M_PARA,   SS_TAP(X_O) SS_TAP(X_S));
+  COMPOSE(M_DEGR,   SS_TAP(X_O) SS_TAP(X_O));
+  COMPOSE(M_LTLT,   SS_LSFT(SS_TAP(X_COMMA) SS_TAP(X_COMMA)));
+  COMPOSE(M_GTGT,   SS_LSFT(SS_TAP(X_DOT) SS_TAP(X_DOT)));
+    /* text entering macros */
   case M_BFNBGBM:
     if (record->event.pressed) {
       SEND_STRING("BFNBGBM-");
