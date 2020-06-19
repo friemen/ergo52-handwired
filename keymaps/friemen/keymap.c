@@ -8,7 +8,8 @@ enum custom_layers {
   _QWERTY = 0,
   _MODS,
   _CAPS,
-  _FN1,
+  _FN,
+  _NAV,
   _MPOINT,
   _MWHEEL,
   _UMLAUTS,
@@ -40,9 +41,9 @@ enum custom_keycodes {
 #define A_CTL      MT(MOD_LCTL, KC_A)
 #define S_GUI      MT(MOD_LGUI, KC_S)
 #define D_ALT      MT(MOD_LALT, KC_D)
-#define F_FN1      LT(_FN1, KC_F)
-#define S_F_FN1    LT(_FN1, S(KC_F))
-#define J_FN1      LT(_FN1, KC_J)
+#define F_FN       LT(_FN, KC_F)
+#define S_F_FN     LT(_FN, S(KC_F))
+#define J_FN       LT(_FN, KC_J)
 #define K_ALT      MT(MOD_LALT, KC_K)
 #define L_GUI      MT(MOD_RGUI, KC_L)
 #define SCLN_CTL   MT(MOD_RCTL, KC_SCLN)
@@ -68,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_MODS] = LAYOUT(
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
-    _______,   A_CTL,     S_GUI,     D_ALT,     F_FN1,     _______,   _______,   J_FN1,     K_ALT,     L_GUI,     SCLN_CTL,  _______, \
+    _______,   A_CTL,     S_GUI,     D_ALT,     F_FN,      _______,   _______,   J_FN,      K_ALT,     L_GUI,     SCLN_CTL,  _______, \
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
                                                 _______,   _______,   _______,   _______ \
   ),
@@ -76,16 +77,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_CAPS] = LAYOUT(
     TG(_CAPS), _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   S(KC_MINS),_______,   _______, \
     _______,   S(KC_Q),   S(KC_W),   S(KC_E),   S(KC_R),   S(KC_T),   S(KC_Y),   S(KC_U),   S(KC_I),   S(KC_O),   S(KC_P),   _______, \
-    _______,   S(KC_A),   S(KC_S),   S(KC_D),   S_F_FN1,   S(KC_G),   S(KC_H),   S(KC_J),   S(KC_K),   S(KC_L),   _______,   _______, \
+    _______,   S(KC_A),   S(KC_S),   S(KC_D),   S_F_FN,    S(KC_G),   S(KC_H),   S(KC_J),   S(KC_K),   S(KC_L),   _______,   _______, \
     _______,   S(KC_Z),   S(KC_X),   S(KC_C),   S(KC_V),   S(KC_B),   S(KC_N),   S(KC_M),   _______,   _______,   _______,   _______, \
                                                 _______,   _______,   _______,   _______ \
   ),
 
-  [_FN1] = LAYOUT(
+  [_FN] = LAYOUT(
     _______,   KC_F1,     KC_F2,     KC_F3,     KC_F4,     KC_F5,     KC_F6,     KC_F7,     KC_F8,     KC_F9,     KC_F10,    KC_DEL,  \
     TG(_CAPS), KC_F11,    KC_F12,    CTL_PLUS,  _______,  OSL(_TEXT), _______,   _______,   KC_UP,     KC_PGUP,   KC_PGDN,   KC_INS,  \
     _______,   _______,   _______,   CTL_MINS,  _______,   _______,   KC_HOME,   KC_LEFT,   KC_DOWN,   KC_RIGHT,  KC_END,    KC_ENT,  \
-    RESET,     _______,   _______,   KC_MPRV,   KC_MPLY,   KC_MNXT,   KC_HOME,   KC_END,    KC_VOLD,   KC_VOLU,   KC_MUTE,   RESET,   \
+    RESET,     _______,   _______,   KC_MPRV,   KC_MPLY,   KC_MNXT,   KC_HOME,   KC_END,    KC_VOLD,   KC_VOLU,   KC_MUTE,   TG(_NAV), \
+                                                _______,   _______,   _______,   _______  \
+  ),
+
+  [_NAV] = LAYOUT(
+   TG(_NAV),   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
+    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_UP,     KC_PGUP,   KC_PGDN,   KC_DEL,  \
+    _______,   _______,   _______,   _______,   _______,   _______,   KC_HOME,   KC_LEFT,   KC_DOWN,   KC_RIGHT,  KC_END,    KC_ENT,  \
+    _______,   _______,   _______,   _______,   _______,   _______,   KC_HOME,   KC_END,    _______,   _______,   _______,   _______, \
                                                 _______,   _______,   _______,   _______  \
   ),
 
