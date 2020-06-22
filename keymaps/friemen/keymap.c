@@ -35,8 +35,8 @@ enum custom_keycodes {
 };
 
 #define CAPS_UML   OSL(_UMLAUTS)
-#define Q_MPOINT   LT(_MPOINT,KC_Q)
-#define W_MWHEEL   LT(_MWHEEL,KC_W)
+#define Q_MPOINT   LT(_MPOINT, KC_Q)
+#define W_MWHEEL   LT(_MWHEEL, KC_W)
 #define GRV_LSFT   MT(MOD_LSFT, KC_GRV)
 #define A_CTL      MT(MOD_LCTL, KC_A)
 #define S_GUI      MT(MOD_LGUI, KC_S)
@@ -50,10 +50,10 @@ enum custom_keycodes {
 #define QUOT_RSFT  MT(MOD_RSFT, KC_QUOT)
 #define CTL_PLUS   LCTL(KC_PLUS)
 #define CTL_MINS   LCTL(KC_MINUS)
-#define APP_NUM    LT(_NUM,KC_APP)
+#define APP_NUM    LT(_NUM, KC_APP)
 #define BSPC_SYM   LT(_SYM, KC_BSPC)
 #define SPC_SYM    LT(_SYM, KC_SPC)
-#define ENT_NUM    LT(_NUM,KC_ENT)
+#define ENT_NUM    LT(_NUM, KC_ENT)
 
 
 // ERGO52
@@ -126,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TG(_NUM),  KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      KC_6,      KC_7,      KC_8,      KC_9,      KC_EQL,    _______, \
     TG(_NUM),  KC_4,      KC_5,      KC_6,      _______,   _______,   _______,   KC_4,      KC_5,      KC_6,      KC_PLUS,   KC_ASTR, \
     _______,   KC_7,      KC_8,      KC_9,      _______,   _______,   _______,   KC_1,      KC_2,      KC_3,      KC_MINS,   KC_QUOT, \
-    _______,   KC_0,      _______,   _______,   _______,   _______,   _______,   KC_0,      KC_COMM,   KC_DOT,    KC_SLSH,   _______, \
+    _______,   KC_0,      _______,   _______,   _______,   _______,   _______,   KC_0,      KC_COMM,   KC_DOT,    KC_SLSH,   KC_ENT,  \
                                                 _______,   _______,   _______,   _______ \
   ),
 
