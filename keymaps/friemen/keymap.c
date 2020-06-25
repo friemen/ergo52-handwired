@@ -46,7 +46,7 @@ enum custom_keycodes {
 #define J_FN       LT(_FN, KC_J)
 #define K_ALT      MT(MOD_LALT, KC_K)
 #define L_GUI      MT(MOD_RGUI, KC_L)
-#define SCLN_CTL   MT(MOD_RCTL, KC_SCLN)
+#define P_CTL      MT(MOD_RCTL, KC_P)
 #define QUOT_RSFT  MT(MOD_RSFT, KC_QUOT)
 #define CTL_PLUS   LCTL(KC_PLUS)
 #define CTL_MINS   LCTL(KC_MINUS)
@@ -60,8 +60,8 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT(
     KC_ESC,    KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      KC_6,      KC_7,      KC_8,      KC_9,      KC_0,      KC_BSPC, \
-    KC_TAB,    Q_MPOINT,  W_MWHEEL,  KC_E,      KC_R,      KC_T,      KC_Y,      KC_U,      KC_I,      KC_O,      KC_P,      KC_DEL,  \
-    KC_LSFT,   KC_A,      KC_S,      KC_D,      KC_F,      KC_G,      KC_H,      KC_J,      KC_K,      KC_L,      KC_SCLN,   KC_RSFT, \
+    KC_TAB,    Q_MPOINT,  W_MWHEEL,  KC_E,      KC_R,      KC_T,      KC_Y,      KC_U,      KC_I,      KC_O,      KC_SCLN,   KC_DEL,  \
+    KC_LSFT,   KC_A,      KC_S,      KC_D,      KC_F,      KC_G,      KC_H,      KC_J,      KC_K,      KC_L,      KC_P,      KC_RSFT, \
     CAPS_UML,  KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,      KC_N,      KC_M,      KC_COMM,   KC_DOT,    KC_SLSH,   CAPS_UML,\
                                                 APP_NUM,   BSPC_SYM,  SPC_SYM,   ENT_NUM \
   ),
@@ -69,15 +69,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_MODS] = LAYOUT(
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
-    _______,   A_CTL,     S_GUI,     D_ALT,     F_FN,      _______,   _______,   J_FN,      K_ALT,     L_GUI,     SCLN_CTL,  _______, \
+    _______,   A_CTL,     S_GUI,     D_ALT,     F_FN,      _______,   _______,   J_FN,      K_ALT,     L_GUI,     P_CTL,     _______, \
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
                                                 _______,   _______,   _______,   _______ \
   ),
 
   [_CAPS] = LAYOUT(
     TG(_CAPS), _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   S(KC_MINS),_______,   _______, \
-    _______,   S(KC_Q),   S(KC_W),   S(KC_E),   S(KC_R),   S(KC_T),   S(KC_Y),   S(KC_U),   S(KC_I),   S(KC_O),   S(KC_P),   _______, \
-    _______,   S(KC_A),   S(KC_S),   S(KC_D),   S_F_FN,    S(KC_G),   S(KC_H),   S(KC_J),   S(KC_K),   S(KC_L),   _______,   _______, \
+    _______,   S(KC_Q),   S(KC_W),   S(KC_E),   S(KC_R),   S(KC_T),   S(KC_Y),   S(KC_U),   S(KC_I),   S(KC_O),   _______,   _______, \
+    _______,   S(KC_A),   S(KC_S),   S(KC_D),   S_F_FN,    S(KC_G),   S(KC_H),   S(KC_J),   S(KC_K),   S(KC_L),   S(KC_P),   _______, \
     _______,   S(KC_Z),   S(KC_X),   S(KC_C),   S(KC_V),   S(KC_B),   S(KC_N),   S(KC_M),   _______,   _______,   _______,   _______, \
                                                 _______,   _______,   _______,   _______ \
   ),
@@ -116,8 +116,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_UMLAUTS] = LAYOUT(
     TG(_UMLAUTS), M_DEGR, _______,   M_PARA,    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
-    _______,   _______,   _______,   M_EURO,    _______,   _______,   M_YEN,     M_UMLU,    _______,   M_UMLO,    M_POUND,   _______, \
-    _______,   M_UMLA,    M_ESZETT,  KC_DLR,    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
+    _______,   _______,   _______,   M_EURO,    _______,   _______,   M_YEN,     M_UMLU,    _______,   M_UMLO,    _______,   _______, \
+    _______,   M_UMLA,    M_ESZETT,  KC_DLR,    _______,   _______,   _______,   _______,   _______,   _______,   M_POUND,   _______, \
     KC_CAPS,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   M_LTLT,    M_GTGT,    _______,   KC_CAPS, \
                                                 _______,   _______,   _______,   _______ \
   ),
