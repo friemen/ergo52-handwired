@@ -87,15 +87,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TG(_CAPS), KC_F11,    KC_F12,    CTL_PLUS,  KC_BRIU,  OSL(_TEXT), _______,   _______,   KC_UP,     KC_PGUP,   KC_PGDN,   KC_INS,  \
     _______,   _______,   _______,   CTL_MINS,  KC_BRID,   _______,   KC_HOME,   KC_LEFT,   KC_DOWN,   KC_RIGHT,  KC_END,    KC_ENT,  \
     RESET,     _______,   _______,   KC_MPRV,   KC_MPLY,   KC_MNXT,   KC_HOME,   KC_END,    KC_VOLD,   KC_VOLU,   KC_MUTE,   TG(_NAV),\
-                                                _______,   _______,   _______,   _______  \
+                                                _______,   KC_BSPC,   KC_SPC,    KC_ENT  \
   ),
 
   [_NAV] = LAYOUT(
    TG(_NAV),   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
-    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_UP,     KC_PGUP,   KC_PGDN,   KC_DEL,  \
-    _______,   _______,   _______,   _______,   _______,   _______,   KC_HOME,   KC_LEFT,   KC_DOWN,   KC_RIGHT,  KC_END,    KC_ENT,  \
+    _______,   _______,   _______,   KC_W,      _______,   _______,   _______,   _______,   KC_UP,     KC_PGUP,   KC_PGDN,   KC_DEL,  \
+    _______,   KC_ESC,    KC_A,      KC_S,      KC_D,      _______,   KC_HOME,   KC_LEFT,   KC_DOWN,   KC_RIGHT,  KC_END,    KC_ENT,  \
     _______,   _______,   _______,   _______,   _______,   _______,   KC_HOME,   KC_END,    _______,   _______,   _______,   _______, \
-                                                _______,   _______,   _______,   _______  \
+                                                KC_SPC,    KC_ENT,    _______,   _______  \
   ),
 
   [_MPOINT] = LAYOUT(
