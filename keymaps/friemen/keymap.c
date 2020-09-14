@@ -221,15 +221,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case M_BFNBGBM:
     if (record->event.pressed) {
       SEND_STRING("BFNBGBM-");
-      layer_on(_NUM);
     }
-    return false;
+    return true;
   case M_DTMS:
     if (record->event.pressed) {
       SEND_STRING("DTMS-");
-      layer_on(_NUM);
     }
-    return false;
+    return true;
   default:
     return true;
   }
