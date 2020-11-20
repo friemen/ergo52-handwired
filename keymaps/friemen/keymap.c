@@ -42,7 +42,6 @@ enum custom_keycodes {
 #define S_GUI      MT(MOD_LGUI, KC_S)
 #define D_ALT      MT(MOD_LALT, KC_D)
 #define F_FN       LT(_FN, KC_F)
-#define S_F_FN     LT(_FN, S(KC_F))
 #define J_FN       LT(_FN, KC_J)
 #define K_ALT      MT(MOD_LALT, KC_K)
 #define L_GUI      MT(MOD_RGUI, KC_L)
@@ -77,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_CAPS] = LAYOUT(
     TG(_CAPS), _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   S(KC_MINS),_______,   _______, \
     _______,   S(KC_Q),   S(KC_W),   S(KC_E),   S(KC_R),   S(KC_T),   S(KC_Y),   S(KC_U),   S(KC_I),   S(KC_O),   _______,   _______, \
-    _______,   S(KC_A),   S(KC_S),   S(KC_D),   S_F_FN,    S(KC_G),   S(KC_H),   S(KC_J),   S(KC_K),   S(KC_L),   S(KC_P),   _______, \
+    _______,   S(KC_A),   S(KC_S),   S(KC_D),   S(KC_F),   S(KC_G),   S(KC_H),   S(KC_J),   S(KC_K),   S(KC_L),   S(KC_P),   _______, \
     _______,   S(KC_Z),   S(KC_X),   S(KC_C),   S(KC_V),   S(KC_B),   S(KC_N),   S(KC_M),   _______,   _______,   _______,   _______, \
                                                 _______,   _______,   _______,   _______ \
   ),
