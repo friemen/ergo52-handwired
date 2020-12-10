@@ -31,7 +31,8 @@ enum custom_keycodes {
   M_LTLT,
   M_GTGT,
   M_BFNBGBM,
-  M_DTMS
+  M_DTMS,
+  M_OVSMSUP
 };
 
 #define CAPS_UML   OSL(_UMLAUTS)
@@ -139,7 +140,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_TEXT] = LAYOUT(
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
-    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
+    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   M_OVSMSUP, _______,   _______, \
     _______,   _______,   _______,   M_DTMS,    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
     _______,   _______,   _______,   _______,   _______,  M_BFNBGBM,  _______,   _______,   _______,   _______,   _______,   _______, \
                                                 _______,   _______,   _______,   _______ \
@@ -225,6 +226,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case M_DTMS:
     if (record->event.pressed) {
       SEND_STRING("DTMS-");
+    }
+    return true;
+  case M_OVSMSUP:
+    if (record->event.pressed) {
+      SEND_STRING("OVSMSUP-");
     }
     return true;
   default:
