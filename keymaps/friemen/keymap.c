@@ -132,9 +132,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_SYM] = LAYOUT(
     _______,   KC_EXLM,   KC_AT,     KC_HASH,   KC_DLR,    KC_PERC,   KC_CIRC,   KC_AMPR,   KC_LCBR,   KC_RCBR,   KC_EQL,    _______, \
-    _______,   KC_ASTR,   KC_GRV,    KC_PIPE,   KC_HASH,   KC_COMM,   _______,   _______,   KC_LBRC,   KC_RBRC,   KC_PLUS,   KC_ASTR, \
-    _______,   KC_COLN,   KC_TILD,   KC_DQUO,   KC_MINS,   KC_DOT,    _______,   KC_SLSH,   KC_LPRN,   KC_RPRN,   KC_MINS,   KC_QUOT, \
-    _______,   KC_SCLN,   KC_BSLS,   KC_QUOT,   KC_UNDS,   KC_QUES,   _______,   KC_PERC,   KC_LT,     KC_GT,     KC_SLSH,   _______, \
+    _______,   KC_ASTR,   KC_PIPE,   KC_GRV,    KC_HASH,   KC_COMM,   KC_AT,     KC_HASH,   KC_LBRC,   KC_RBRC,   KC_PLUS,   KC_ASTR, \
+    _______,   KC_COLN,   KC_TILD,   KC_DQUO,   KC_MINS,   KC_DOT,    KC_EXLM,   KC_MINS,   KC_LPRN,   KC_RPRN,   KC_MINS,   KC_QUOT, \
+    _______,   KC_SCLN,   KC_BSLS,   KC_QUOT,   KC_UNDS,   KC_QUES,   KC_PERC,   KC_UNDS,   KC_LT,     KC_GT,     KC_SLSH,   _______, \
                                                 _______,   _______,   _______,   _______ \
   ),
 
