@@ -51,6 +51,8 @@ enum custom_keycodes {
 #define QUOT_RSFT  MT(MOD_RSFT, KC_QUOT)
 #define CTL_PLUS   LCTL(KC_PLUS)
 #define CTL_MINS   LCTL(KC_MINUS)
+#define CTL_PGUP   LCTL(KC_PGUP)
+#define CTL_PGDN   LCTL(KC_PGDN)
 #define APP_NUM    LT(_NUM, KC_APP)
 #define BSPC_SYM   LT(_SYM, KC_BSPC)
 #define SPC_SYM    LT(_SYM, KC_SPC)
@@ -84,10 +86,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_FN] = LAYOUT(
-    _______,   KC_F1,     KC_F2,     KC_F3,     KC_F4,     KC_F5,     KC_F6,     KC_F7,     KC_F8,     KC_F9,     KC_F10,    KC_DEL,  \
-    TG(_CAPS), KC_F11,    KC_F12,    CTL_PLUS,  KC_BRIU,  OSL(_TEXT), _______,   _______,   KC_UP,     KC_PGUP,   KC_PGDN,   KC_INS,  \
-    _______,   _______,   _______,   CTL_MINS,  KC_BRID,   _______,   KC_HOME,   KC_LEFT,   KC_DOWN,   KC_RIGHT,  KC_END,    KC_ENT,  \
-    RESET,     _______,   _______,   KC_MPRV,   KC_MPLY,   KC_MNXT,   KC_HOME,   KC_END,    KC_VOLD,   KC_VOLU,   KC_MUTE,   TG(_NAV),\
+    _______,   KC_F1,     KC_F2,     KC_F3,     KC_F4,     KC_F5,     KC_F6,     KC_F7,     KC_F8,     KC_F9,     KC_F10,    _______, \
+    TG(_CAPS), KC_F11,    KC_F12,    KC_NO,     KC_BRIU,  OSL(_TEXT), _______,   _______,   KC_UP,     KC_PGUP,   KC_PGDN,   KC_INS,  \
+    _______,   _______,   KC_PSCR,   KC_NO,     KC_BRID,   _______,   KC_HOME,   KC_LEFT,   KC_DOWN,   KC_RIGHT,  KC_END,    KC_ENT,  \
+    RESET,     CTL_MINS,  CTL_PLUS,  KC_MPRV,   KC_MPLY,   KC_MNXT,   CTL_PGUP,  CTL_PGDN,  KC_VOLD,   KC_VOLU,   KC_MUTE,   TG(_NAV),\
                                                 _______,   KC_BSPC,   KC_SPC,    KC_ENT  \
   ),
 
@@ -95,7 +97,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    TG(_NAV),   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
     _______,   _______,   _______,   KC_W,      _______,   _______,   _______,   _______,   KC_UP,     KC_PGUP,   KC_PGDN,   KC_DEL,  \
     _______,   KC_ESC,    KC_A,      KC_S,      KC_D,      _______,   KC_HOME,   KC_LEFT,   KC_DOWN,   KC_RIGHT,  KC_END,    KC_ENT,  \
-    _______,   _______,   _______,   _______,   _______,   _______,   KC_HOME,   KC_END,    _______,   _______,   _______,   _______, \
+    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
                                                 KC_SPC,    KC_ENT,    _______,   _______  \
   ),
 
