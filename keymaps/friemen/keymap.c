@@ -6,7 +6,6 @@
 
 enum custom_layers {
   _QWERTY = 0,
-  _MODS,
   _CAPS,
   _FN,
   _NAV,
@@ -64,17 +63,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT(
     KC_ESC,    KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      KC_6,      KC_7,      KC_8,      KC_9,      KC_0,      KC_BSPC, \
     KC_TAB,    Q_MPOINT,  W_MWHEEL,  KC_E,      KC_R,      KC_T,      KC_Y,      KC_U,      KC_I,      KC_O,      KC_SCLN,   KC_DEL,  \
-    KC_LSFT,   KC_A,      KC_S,      KC_D,      KC_F,      KC_G,      KC_H,      KC_J,      KC_K,      KC_L,      KC_P,      KC_RSFT, \
+    KC_LSFT,   A_CTL,     S_GUI,     D_ALT,     F_FN,      KC_G,      KC_H,      J_FN,      K_ALT,     L_GUI,     P_CTL,     KC_RSFT, \
     CAPS_UML,  KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,      KC_N,      KC_M,      KC_COMM,   KC_DOT,    KC_SLSH,   CAPS_UML,\
                                                 APP_NUM,   BSPC_SYM,  SPC_SYM,   ENT_NUM \
-  ),
-  // always activated
-  [_MODS] = LAYOUT(
-    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
-    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
-    _______,   A_CTL,     S_GUI,     D_ALT,     F_FN,      _______,   _______,   J_FN,      K_ALT,     L_GUI,     P_CTL,     _______, \
-    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
-                                                _______,   _______,   _______,   _______ \
   ),
 
   [_CAPS] = LAYOUT(
@@ -162,7 +153,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // right after keyboard init
 void keyboard_post_init_user() {
-  layer_on(_MODS);
+  // layer_on(_MODS);
 }
 
 
