@@ -6,7 +6,6 @@
 
 enum custom_layers {
   _QWERTY = 0,
-  _CAPS,
   _FN,
   _NAV,
   _MPOINT,
@@ -35,7 +34,7 @@ enum custom_keycodes {
   M_SNAPS
 };
 
-#define CAPS_UML   OSL(_UMLAUTS)
+#define COMP_UML   OSL(_UMLAUTS)
 #define Q_MPOINT   LT(_MPOINT, KC_Q)
 #define W_MWHEEL   LT(_MWHEEL, KC_W)
 #define GRV_LSFT   MT(MOD_LSFT, KC_GRV)
@@ -56,6 +55,7 @@ enum custom_keycodes {
 #define BSPC_SYM   LT(_SYM, KC_BSPC)
 #define SPC_SYM    LT(_SYM, KC_SPC)
 #define ENT_NUM    LT(_NUM, KC_ENT)
+#define X_COMPOSE  X_PAUSE    // this must match the setxkbmap -option "compose:paus"
 
 
 // ERGO52
@@ -64,21 +64,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC,    KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      KC_6,      KC_7,      KC_8,      KC_9,      KC_0,      KC_BSPC, \
     KC_TAB,    Q_MPOINT,  W_MWHEEL,  KC_E,      KC_R,      KC_T,      KC_Y,      KC_U,      KC_I,      KC_O,      KC_SCLN,   KC_DEL,  \
     KC_LSFT,   A_CTL,     S_GUI,     D_ALT,     F_FN,      KC_G,      KC_H,      J_FN,      K_ALT,     L_GUI,     P_CTL,     KC_RSFT, \
-    CAPS_UML,  KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,      KC_N,      KC_M,      KC_COMM,   KC_DOT,    KC_SLSH,   CAPS_UML,\
+    COMP_UML,  KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,      KC_N,      KC_M,      KC_COMM,   KC_DOT,    KC_SLSH,   COMP_UML,\
                                                 APP_NUM,   BSPC_SYM,  SPC_SYM,   ENT_NUM \
-  ),
-
-  [_CAPS] = LAYOUT(
-    TG(_CAPS), _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   S(KC_MINS),_______,   _______, \
-    _______,   S(KC_Q),   S(KC_W),   S(KC_E),   S(KC_R),   S(KC_T),   S(KC_Y),   S(KC_U),   S(KC_I),   S(KC_O),   _______,   _______, \
-    _______,   S(KC_A),   S(KC_S),   S(KC_D),   S(KC_F),   S(KC_G),   S(KC_H),   S(KC_J),   S(KC_K),   S(KC_L),   S(KC_P),   _______, \
-    _______,   S(KC_Z),   S(KC_X),   S(KC_C),   S(KC_V),   S(KC_B),   S(KC_N),   S(KC_M),   _______,   _______,   _______,   _______, \
-                                                _______,   _______,   _______,   _______ \
   ),
 
   [_FN] = LAYOUT(
     _______,   KC_F1,     KC_F2,     KC_F3,     KC_F4,     KC_F5,     KC_F6,     KC_F7,     KC_F8,     KC_F9,     KC_F10,    _______, \
-    TG(_CAPS), KC_F11,    KC_F12,    KC_NO,     KC_BRIU,  OSL(_TEXT), _______,   _______,   KC_UP,     KC_PGUP,   KC_PGDN,   KC_INS,  \
+    KC_CAPS,   KC_F11,    KC_F12,    KC_NO,     KC_BRIU,  OSL(_TEXT), _______,   _______,   KC_UP,     KC_PGUP,   KC_PGDN,   KC_INS,  \
     _______,   _______,   KC_PSCR,   KC_NO,     KC_BRID,   _______,   KC_HOME,   KC_LEFT,   KC_DOWN,   KC_RIGHT,  KC_END,    KC_ENT,  \
     RESET,     CTL_MINS,  CTL_PLUS,  KC_MPRV,   KC_MPLY,   KC_MNXT,   CTL_PGUP,  CTL_PGDN,  KC_VOLD,   KC_VOLU,   KC_MUTE,   TG(_NAV),\
                                                 _______,   KC_BSPC,   KC_SPC,    KC_ENT  \
@@ -112,7 +104,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TG(_UMLAUTS), M_DEGR, _______,   M_PARA,    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
     _______,   _______,   _______,   M_EURO,    _______,   _______,   M_YEN,     M_UMLU,    _______,   M_UMLO,    _______,   _______, \
     _______,   M_UMLA,    M_ESZETT,  KC_DLR,    _______,   _______,   _______,   _______,   _______,   _______,   M_POUND,   _______, \
-    KC_CAPS,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   M_LTLT,    M_GTGT,    _______,   KC_CAPS, \
+    KC_PAUS,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   M_LTLT,    M_GTGT,    _______,   KC_PAUS, \
                                                 _______,   _______,   _______,   _______ \
   ),
 
@@ -161,9 +153,9 @@ void keyboard_post_init_user() {
 void compose_umlaut(char *umlaut) {
   bool is_shift = keyboard_report->mods & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT));
   if (is_shift) {
-    SEND_STRING(SS_TAP(X_CAPSLOCK) SS_TAP(X_QUOT));
+    SEND_STRING(SS_TAP(X_COMPOSE) SS_TAP(X_QUOT));
   } else {
-    SEND_STRING(SS_TAP(X_CAPSLOCK) SS_LSFT(SS_TAP(X_QUOT)));
+    SEND_STRING(SS_TAP(X_COMPOSE) SS_LSFT(SS_TAP(X_QUOT)));
   }
   send_string(umlaut);
 };
@@ -172,7 +164,7 @@ void compose_umlaut(char *umlaut) {
 #define COMPOSE(KC,SEQUENCE) \
   case KC: \
     if (record->event.pressed) { \
-      SEND_STRING(SS_TAP(X_CAPSLOCK) SS_DELAY(50) SEQUENCE); \
+      SEND_STRING(SS_TAP(X_COMPOSE) SS_DELAY(50) SEQUENCE); \
       layer_off(_UMLAUTS); \
     } \
     return false;
@@ -239,27 +231,27 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 // reacting on layer change
 
-bool _caps = false;
+/* bool _caps = false; */
 
-layer_state_t layer_state_set_user(layer_state_t state) {
-  /* char state_string[20]; */
-  /* sprintf(state_string,"%lu  ", state); */
-  /* send_string(state_string); */
+/* layer_state_t layer_state_set_user(layer_state_t state) { */
+/*   /\* char state_string[20]; *\/ */
+/*   /\* sprintf(state_string,"%lu  ", state); *\/ */
+/*   /\* send_string(state_string); *\/ */
 
-  // send F13 (keycode 191) and F14 (keycode 192) when _NUM layer state changes
-  // these keypresses correspond to i3 bindcode expressions
-  bool old_caps = _caps;
-  if (state & (1 << _CAPS)) {
-    _caps = true;
-  } else {
-    _caps = false;
-  }
-  if (old_caps != _caps) {
-    if (_caps) {
-      SEND_STRING(SS_LGUI(SS_TAP(X_F14)));
-    } else {
-      SEND_STRING(SS_LGUI(SS_TAP(X_F13)));
-    }
-  }
-  return state;
-};
+/*   // send F13 (keycode 191) and F14 (keycode 192) when _NUM layer state changes */
+/*   // these keypresses correspond to i3 bindcode expressions */
+/*   bool old_caps = _caps; */
+/*   if (state & (1 << _CAPS)) { */
+/*     _caps = true; */
+/*   } else { */
+/*     _caps = false; */
+/*   } */
+/*   if (old_caps != _caps) { */
+/*     if (_caps) { */
+/*       SEND_STRING(SS_LGUI(SS_TAP(X_F14))); */
+/*     } else { */
+/*       SEND_STRING(SS_LGUI(SS_TAP(X_F13))); */
+/*     } */
+/*   } */
+/*   return state; */
+/* }; */
