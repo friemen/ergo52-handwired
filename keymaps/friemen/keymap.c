@@ -71,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_FN] = LAYOUT(
     _______,   KC_F1,     KC_F2,     KC_F3,     KC_F4,     KC_F5,     KC_F6,     KC_F7,     KC_F8,     KC_F9,     KC_F10,    _______, \
     KC_CAPS,   KC_F11,    KC_F12,    KC_NO,     KC_BRIU,  OSL(_TEXT), _______,   _______,   KC_UP,     KC_PGUP,   KC_PGDN,   KC_INS,  \
-    _______,   _______,   KC_PSCR,   KC_NO,     KC_BRID,   _______,   KC_HOME,   KC_LEFT,   KC_DOWN,   KC_RIGHT,  KC_END,    KC_ENT,  \
+    _______,   KC_NLCK,   KC_PSCR,   KC_NO,     KC_BRID,   _______,   KC_HOME,   KC_LEFT,   KC_DOWN,   KC_RIGHT,  KC_END,    KC_ENT,  \
     RESET,     CTL_MINS,  CTL_PLUS,  KC_MPRV,   KC_MPLY,   KC_MNXT,   CTL_PGUP,  CTL_PGDN,  KC_VOLD,   KC_VOLU,   KC_MUTE,   TG(_NAV),\
                                                 _______,   KC_BSPC,   KC_SPC,    KC_ENT  \
   ),
@@ -109,10 +109,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_NUM] = LAYOUT(
-    TG(_NUM),  KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      KC_6,      KC_7,      KC_8,      KC_9,      KC_EQL,    _______, \
-    TG(_NUM),  KC_4,      KC_5,      KC_6,      _______,   _______,   _______,   KC_4,      KC_5,      KC_6,      KC_PLUS,   KC_ASTR, \
-    _______,   KC_7,      KC_8,      KC_9,      _______,   _______,   KC_COLN,   KC_1,      KC_2,      KC_3,      KC_MINS,   KC_QUOT, \
-    _______,   KC_0,      _______,   _______,   _______,   _______,   _______,   KC_0,      KC_COMM,   KC_DOT,    KC_SLSH,   KC_ENT,  \
+    TG(_NUM),  KC_KP_1,   KC_KP_2,   KC_KP_3,   KC_KP_4,   KC_KP_5,   KC_KP_6,   KC_KP_7,   KC_KP_8,   KC_KP_9,   KC_EQL,    _______, \
+    _______,   KC_KP_4,   KC_KP_5,   KC_KP_6,   _______,   _______,   _______,   KC_KP_4,   KC_KP_5,   KC_KP_6,   KC_PLUS,   KC_ASTR, \
+    _______,   KC_KP_7,   KC_KP_8,   KC_KP_9,   _______,   _______,   KC_COLN,   KC_KP_1,   KC_KP_2,   KC_KP_3,   KC_MINS,   KC_QUOT, \
+    _______,   KC_KP_0,   _______,   _______,   _______,   _______,   _______,   KC_KP_0,   KC_COMM,   KC_DOT,    KC_SLSH,   KC_ENT,  \
                                                 _______,   _______,   _______,   _______ \
   ),
 
@@ -231,27 +231,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 // reacting on layer change
 
-/* bool _caps = false; */
+layer_state_t layer_state_set_user(layer_state_t state) {
+  /* char state_string[20]; */
+  /* sprintf(state_string,"%lu  ", state); */
+  /* send_string(state_string); */
 
-/* layer_state_t layer_state_set_user(layer_state_t state) { */
-/*   /\* char state_string[20]; *\/ */
-/*   /\* sprintf(state_string,"%lu  ", state); *\/ */
-/*   /\* send_string(state_string); *\/ */
-
-/*   // send F13 (keycode 191) and F14 (keycode 192) when _NUM layer state changes */
-/*   // these keypresses correspond to i3 bindcode expressions */
-/*   bool old_caps = _caps; */
-/*   if (state & (1 << _CAPS)) { */
-/*     _caps = true; */
-/*   } else { */
-/*     _caps = false; */
-/*   } */
-/*   if (old_caps != _caps) { */
-/*     if (_caps) { */
-/*       SEND_STRING(SS_LGUI(SS_TAP(X_F14))); */
-/*     } else { */
-/*       SEND_STRING(SS_LGUI(SS_TAP(X_F13))); */
-/*     } */
-/*   } */
-/*   return state; */
-/* }; */
+  // turn numlock on in _NUM layer
+  bool numlock = (host_keyboard_leds() & (1 << USB_LED_NUM_LOCK));
+  if (state & (1 << _NUM)) {
+    if (!numlock) {
+      SEND_STRING(SS_TAP(X_NUMLOCK));
+    }
+  } else {
+    if (numlock) {
+      SEND_STRING(SS_TAP(X_NUMLOCK));
+    }
+  }
+  return state;
+};
