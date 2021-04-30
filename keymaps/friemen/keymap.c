@@ -52,7 +52,7 @@ enum custom_keycodes {
 #define CTL_PGUP   LCTL(KC_PGUP)
 #define CTL_PGDN   LCTL(KC_PGDN)
 #define APP_NUM    LT(_NUM, KC_APP)
-#define BSPC_SYM   LT(_SYM, KC_BSPC)
+#define MINS_SYM   LT(_SYM, KC_MINS)
 #define SPC_SYM    LT(_SYM, KC_SPC)
 #define ENT_NUM    LT(_NUM, KC_ENT)
 #define X_COMPOSE  X_PAUSE    // this must match the setxkbmap -option "compose:paus"
@@ -65,7 +65,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,    Q_MPOINT,  W_MWHEEL,  KC_E,      KC_R,      KC_T,      KC_Y,      KC_U,      KC_I,      KC_O,      KC_SCLN,   KC_DEL,  \
     KC_LSFT,   A_CTL,     S_GUI,     D_ALT,     F_FN,      KC_G,      KC_H,      J_FN,      K_ALT,     L_GUI,     P_CTL,     KC_RSFT, \
     COMP_UML,  KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,      KC_N,      KC_M,      KC_COMM,   KC_DOT,    KC_SLSH,   COMP_UML,\
-                                                APP_NUM,   BSPC_SYM,  SPC_SYM,   ENT_NUM \
+                                                APP_NUM,   MINS_SYM,  SPC_SYM,   ENT_NUM \
   ),
 
   [_FN] = LAYOUT(
@@ -73,14 +73,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_CAPS,   KC_F11,    KC_F12,    KC_NO,     KC_BRIU,  OSL(_TEXT), _______,   _______,   KC_UP,     KC_PGUP,   KC_PGDN,   KC_INS,  \
     _______,   KC_NLCK,   KC_PSCR,   KC_NO,     KC_BRID,   _______,   KC_HOME,   KC_LEFT,   KC_DOWN,   KC_RIGHT,  KC_END,    KC_ENT,  \
     RESET,     CTL_MINS,  CTL_PLUS,  KC_MPRV,   KC_MPLY,   KC_MNXT,   CTL_PGUP,  CTL_PGDN,  KC_VOLD,   KC_VOLU,   KC_MUTE,   TG(_NAV),\
-                                                _______,   KC_BSPC,   KC_SPC,    KC_ENT  \
+                                                _______,   KC_MINS,   KC_SPC,    KC_ENT  \
   ),
 
   [_NAV] = LAYOUT(
    TG(_NAV),   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
     _______,   _______,   _______,   KC_W,      _______,   _______,   _______,   _______,   KC_UP,     KC_PGUP,   KC_PGDN,   KC_DEL,  \
     _______,   KC_ESC,    KC_A,      KC_S,      KC_D,      _______,   KC_HOME,   KC_LEFT,   KC_DOWN,   KC_RIGHT,  KC_END,    KC_ENT,  \
-    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
+    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   TG(_NAV),\
                                                 KC_SPC,    KC_ENT,    _______,   _______  \
   ),
 
