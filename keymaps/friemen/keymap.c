@@ -31,7 +31,8 @@ enum custom_keycodes {
   M_BFNBGBM,
   M_DTMS,
   M_OVSMSUP,
-  M_SNAPS
+  M_SNAPS,
+  M_WHEREBY
 };
 
 #define COMP_UML   OSL(_UMLAUTS)
@@ -55,7 +56,7 @@ enum custom_keycodes {
 #define MINS_SYM   LT(_SYM, KC_MINS)
 #define SPC_SYM    LT(_SYM, KC_SPC)
 #define ENT_NUM    LT(_NUM, KC_ENT)
-#define X_COMPOSE  X_PAUSE    // this must match the setxkbmap -option "compose:paus"
+#define X_COMPOSE  X_SLCK    // this must match the setxkbmap -option "compose:sclk"
 
 
 // ERGO52
@@ -104,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TG(_UMLAUTS), M_DEGR, _______,   M_PARA,    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
     _______,   _______,   _______,   M_EURO,    _______,   _______,   M_YEN,     M_UMLU,    _______,   M_UMLO,    _______,   _______, \
     _______,   M_UMLA,    M_ESZETT,  KC_DLR,    _______,   _______,   _______,   _______,   _______,   _______,   M_POUND,   _______, \
-    KC_PAUS,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   M_LTLT,    M_GTGT,    _______,   KC_PAUS, \
+    KC_SLCK,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   M_LTLT,    M_GTGT,    _______,   KC_SLCK, \
                                                 _______,   _______,   _______,   _______ \
   ),
 
@@ -126,7 +127,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_TEXT] = LAYOUT(
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
-    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   M_OVSMSUP, _______,   _______, \
+    _______,   _______,  M_WHEREBY,  _______,   _______,   _______,   _______,   _______,   _______,   M_OVSMSUP, _______,   _______, \
     _______,   _______,   M_SNAPS,   M_DTMS,    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
     _______,   _______,   _______,   _______,   _______,  M_BFNBGBM,  _______,   _______,   _______,   _______,   _______,   _______, \
                                                 _______,   _______,   _______,   _______ \
@@ -222,6 +223,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case M_SNAPS:
     if (record->event.pressed) {
       SEND_STRING("SNAPSHOT");
+    }
+    return true;
+  case M_WHEREBY:
+    if (record->event.pressed) {
+      SEND_STRING("https://doctronic.whereby.com/falko");
     }
     return true;
   default:
