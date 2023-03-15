@@ -57,12 +57,12 @@ enum custom_keycodes {
 #define MINS_SYM   LT(_SYM, KC_MINS)
 #define SPC_SYM    LT(_SYM, KC_SPC)
 #define ENT_NUM    LT(_NUM, KC_ENT)
-#define X_COMPOSE  X_SLCK    // this must match the setxkbmap -option "compose:sclk"
+#define X_COMPOSE  X_SCRL    // this must match the setxkbmap -option "compose:sclk"
 
 
 // ERGO52
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [_QWERTY] = LAYOUT(
+  [_QWERTY] = LAYOUT_default(
     KC_ESC,    KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      KC_6,      KC_7,      KC_8,      KC_9,      KC_0,      KC_BSPC, \
     KC_TAB,    Q_MPOINT,  W_MWHEEL,  KC_E,      KC_R,      KC_T,      KC_Y,      KC_U,      KC_I,      KC_O,      KC_SCLN,   KC_DEL,  \
     KC_LSFT,   A_CTL,     S_GUI,     D_ALT,     F_FN,      KC_G,      KC_H,      J_FN,      K_ALT,     L_GUI,     P_CTL,     KC_RSFT, \
@@ -70,15 +70,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                 APP_NUM,   MINS_SYM,  SPC_SYM,   ENT_NUM \
   ),
 
-  [_FN] = LAYOUT(
+  [_FN] = LAYOUT_default(
     _______,   KC_F1,     KC_F2,     KC_F3,     KC_F4,     KC_F5,     KC_F6,     KC_F7,     KC_F8,     KC_F9,     KC_F10,    _______, \
     KC_CAPS,   KC_F11,    KC_F12,    KC_NO,     KC_BRIU,  OSL(_TEXT), _______,   _______,   KC_UP,     KC_PGUP,   KC_PGDN,   KC_INS,  \
-    _______,   KC_NLCK,   KC_PSCR,   KC_NO,     KC_BRID,   _______,   KC_HOME,   KC_LEFT,   KC_DOWN,   KC_RIGHT,  KC_END,    KC_ENT,  \
-    RESET,     CTL_MINS,  CTL_PLUS,  KC_MPRV,   KC_MPLY,   KC_MNXT,   CTL_PGUP,  CTL_PGDN,  KC_VOLD,   KC_VOLU,   KC_MUTE,   TG(_NAV),\
+    _______,   KC_NUM,    KC_PSCR,   KC_NO,     KC_BRID,   _______,   KC_HOME,   KC_LEFT,   KC_DOWN,   KC_RIGHT,  KC_END,    KC_ENT,  \
+    QK_BOOT,     CTL_MINS,  CTL_PLUS,  KC_MPRV,   KC_MPLY,   KC_MNXT,   CTL_PGUP,  CTL_PGDN,  KC_VOLD,   KC_VOLU,   KC_MUTE,   TG(_NAV),\
                                                 _______,   KC_MINS,   KC_SPC,    KC_ENT  \
   ),
 
-  [_NAV] = LAYOUT(
+  [_NAV] = LAYOUT_default(
    TG(_NAV),   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
     _______,   _______,   _______,   KC_W,      _______,   _______,   _______,   _______,   KC_UP,     KC_PGUP,   KC_PGDN,   KC_DEL,  \
     _______,   KC_ESC,    KC_A,      KC_S,      KC_D,      _______,   KC_HOME,   KC_LEFT,   KC_DOWN,   KC_RIGHT,  KC_END,    KC_ENT,  \
@@ -86,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                 KC_SPC,    KC_ENT,    _______,   _______  \
   ),
 
-  [_MPOINT] = LAYOUT(
+  [_MPOINT] = LAYOUT_default(
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_MS_U,   _______,   _______,   _______, \
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_MS_L,   KC_MS_D,   KC_MS_R,   _______,   _______, \
@@ -94,7 +94,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                 KC_BTN1,   KC_BTN2,   KC_BTN1,   KC_BTN2 \
   ),
 
-  [_MWHEEL] = LAYOUT(
+  [_MWHEEL] = LAYOUT_default(
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_WH_U,   _______,   _______,   _______, \
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_WH_L,   KC_WH_D,   KC_WH_R,   _______,   _______, \
@@ -102,15 +102,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                 _______,   _______,   _______,   _______ \
   ),
 
-  [_UMLAUTS] = LAYOUT(
+  [_UMLAUTS] = LAYOUT_default(
     TG(_UMLAUTS), M_DEGR, _______,   M_PARA,    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
     _______,   _______,   _______,   M_EURO,    _______,   _______,   M_YEN,     M_UMLU,    _______,   M_UMLO,    _______,   _______, \
     _______,   M_UMLA,    M_ESZETT,  KC_DLR,    _______,   _______,   _______,   _______,   _______,   _______,   M_POUND,   _______, \
-    KC_SLCK,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   M_LTLT,    M_GTGT,    _______,   KC_SLCK, \
+    KC_SCRL,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   M_LTLT,    M_GTGT,    _______,   KC_SCRL, \
                                                 _______,   _______,   _______,   _______ \
   ),
 
-  [_NUM] = LAYOUT(
+  [_NUM] = LAYOUT_default(
     TG(_NUM),  KC_KP_1,   KC_KP_2,   KC_KP_3,   KC_KP_4,   KC_KP_5,   KC_KP_6,   KC_KP_7,   KC_KP_8,   KC_KP_9,   KC_EQL,    _______, \
     _______,   KC_KP_4,   KC_KP_5,   KC_KP_6,   _______,   _______,   _______,   KC_KP_4,   KC_KP_5,   KC_KP_6,   KC_PLUS,   KC_ASTR, \
     _______,   KC_KP_7,   KC_KP_8,   KC_KP_9,   _______,   _______,   KC_COLN,   KC_KP_1,   KC_KP_2,   KC_KP_3,   KC_MINS,   KC_QUOT, \
@@ -118,7 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                 _______,   _______,   _______,   _______ \
   ),
 
-  [_SYM] = LAYOUT(
+  [_SYM] = LAYOUT_default(
     _______,   KC_EXLM,   KC_AT,     KC_HASH,   KC_DLR,    KC_PERC,   KC_CIRC,   KC_AMPR,   KC_LCBR,   KC_RCBR,   KC_EQL,    _______, \
     _______,   KC_ASTR,   KC_PIPE,   KC_GRV,    KC_HASH,   KC_COMM,   KC_AT,     KC_HASH,   KC_LBRC,   KC_RBRC,   KC_PLUS,   KC_ASTR, \
     _______,   KC_COLN,   KC_TILD,   KC_DQUO,   KC_MINS,   KC_DOT,    KC_EXLM,   KC_MINS,   KC_LPRN,   KC_RPRN,   KC_MINS,   KC_QUOT, \
@@ -126,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                 _______,   _______,   _______,   _______ \
   ),
 
-  [_TEXT] = LAYOUT(
+  [_TEXT] = LAYOUT_default(
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
     _______,   _______,  M_WHEREBY,  _______,   _______,   _______,   _______,   _______,   M_IDWQSHB, M_OVSMSUP, _______,   _______, \
     _______,   _______,   M_SNAPS,   M_DTMS,    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
@@ -134,7 +134,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                 _______,   _______,   _______,   _______ \
   )
 
-  /* [_NEWLAYER] = LAYOUT( */
+  /* [_NEWLAYER] = LAYOUT_default( */
   /*   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \ */
   /*   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \ */
   /*   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \ */
@@ -252,11 +252,11 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   bool numlock = (host_keyboard_leds() & (1 << USB_LED_NUM_LOCK));
   if (state & (1 << _NUM)) {
     if (!numlock) {
-      SEND_STRING(SS_TAP(X_NUMLOCK));
+      SEND_STRING(SS_TAP(X_NUM));
     }
   } else {
     if (numlock) {
-      SEND_STRING(SS_TAP(X_NUMLOCK));
+      SEND_STRING(SS_TAP(X_NUM));
     }
   }
   return state;

@@ -1,15 +1,15 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#include "config_common.h"
+/* #include "config_common.h" */
 
 /* USB Device descriptor parameter */
-#define VENDOR_ID       0xBB80
-#define PRODUCT_ID      0x040D
-#define DEVICE_VER      0x0001
-#define MANUFACTURER    friemen
-#define PRODUCT         Ergo 52 Handwired
-#define DESCRIPTION     A QMK powered Atreus inspired keyboard
+/*#define VENDOR_ID       0xBB80*/
+/*#define PRODUCT_ID      0x040D*/
+/*#define DEVICE_VER      0x0001*/
+/*#define MANUFACTURER    friemen*/
+/*#define PRODUCT         Ergo 52 Handwired*/
+/*#define DESCRIPTION     A QMK powered Atreus inspired keyboard*/
 
 /* key matrix size */
 #define MATRIX_ROWS 5
@@ -38,7 +38,7 @@
 
 #define MATRIX_ROW_PINS { F5, F6, F7, B1, B3 }
 #define MATRIX_COL_PINS { B2, B6, B5, B4, E6, D7, C6, D4, D0, D1, D2, D3 }
-#define UNUSED_PINS
+/*#define UNUSED_PINS*/
 
 /* COL2ROW or ROW2COL */
 #define DIODE_DIRECTION COL2ROW
