@@ -29,6 +29,7 @@ enum custom_keycodes {
   M_LTLT,
   M_GTGT,
   M_BFNBGBM,
+  M_DTKW,
   M_DTMS,
   M_IDWQSHB,
   M_OVSMSUP,
@@ -129,7 +130,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_TEXT] = LAYOUT_default(
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
     _______,   _______,  M_WHEREBY,  _______,   _______,   _______,   _______,   _______,   M_IDWQSHB, M_OVSMSUP, _______,   _______, \
-    _______,   _______,   M_SNAPS,   M_DTMS,    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
+    _______,   _______,   M_SNAPS,   M_DTMS,    _______,   _______,   _______,   _______,   M_DTKW,    _______,   _______,   _______, \
     _______,   _______,   _______,   _______,   _______,  M_BFNBGBM,  _______,   _______,   _______,   _______,   _______,   _______, \
                                                 _______,   _______,   _______,   _______ \
   )
@@ -209,6 +210,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case M_BFNBGBM:
     if (record->event.pressed) {
       SEND_STRING("BFNBGBM-");
+    }
+    return true;
+  case M_DTKW:
+    if (record->event.pressed) {
+      SEND_STRING("DTKW-");
     }
     return true;
   case M_DTMS:
