@@ -1,6 +1,6 @@
 #pragma once
 
-// place overrides here
+// configuration of mod-tap behaviour
 
 // Config options for mod tap and layer tap
 // an extensive post about home row mods is https://precondition.github.io/home-row-mods
@@ -46,6 +46,14 @@
 // quickly type the word 'layer'
 // quickly type 'A'
 // quickly type <space> '-'
+
+
+// configuration of mouse keys
+// see https://docs.qmk.fm/#/feature_mouse_keys?id=configuring-mouse-keys
+
+#define MOUSEKEY_MAX_SPEED 3
+#define MOUSEKEY_WHEEL_MAX_SPEED 5
+
 
 #ifdef FRIEMEN_ERGO52_HANDWIRED
 #undef FRIEMEN_ERGO52_HANDWIRED
