@@ -5,7 +5,8 @@
 #define KEYMAP_SAFE_RANGE 23842
 
 enum custom_layers {
-  _QWERTY = 0,
+  _QWERTY_RIGHT = 0,
+  _QWERTY_LEFT,
   _FN,
   _NAV,
   _MPOINT,
@@ -38,53 +39,49 @@ enum custom_keycodes {
 };
 
 #define COMP_UML   OSL(_UMLAUTS)
-#define Q_MPOINT   LT(_MPOINT, KC_Q)
-#define W_MWHEEL   LT(_MWHEEL, KC_W)
 #define GRV_LSFT   MT(MOD_LSFT, KC_GRV)
-#define A_CTL      MT(MOD_LCTL, KC_A)
-#define S_GUI      MT(MOD_LGUI, KC_S)
-#define D_ALT      MT(MOD_LALT, KC_D)
-#define F_FN       LT(_FN, KC_F)
-#define J_FN       LT(_FN, KC_J)
-#define K_ALT      MT(MOD_LALT, KC_K)
-#define L_GUI      MT(MOD_RGUI, KC_L)
-#define P_CTL      MT(MOD_RCTL, KC_P)
 #define QUOT_RSFT  MT(MOD_RSFT, KC_QUOT)
 #define CTL_PLUS   LCTL(KC_PLUS)
 #define CTL_MINS   LCTL(KC_MINUS)
 #define CTL_PGUP   LCTL(KC_PGUP)
 #define CTL_PGDN   LCTL(KC_PGDN)
-#define APP_NUM    LT(_NUM, KC_APP)
-#define MINS_SYM   LT(_SYM, KC_MINS)
-#define SPC_SYM    LT(_SYM, KC_SPC)
-#define ENT_NUM    LT(_NUM, KC_ENT)
+#define SPC_LEFT   LT(_QWERTY_LEFT, KC_SPC)
+#define ENT_NAV    LT(_NAV, KC_ENT)
 #define X_COMPOSE  X_SCRL    // this must match the setxkbmap -option "compose:sclk"
 
 
 // ERGO52
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [_QWERTY] = LAYOUT_default(
-    KC_ESC,    KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      KC_6,      KC_7,      KC_8,      KC_9,      KC_0,      KC_BSPC, \
-    KC_TAB,    Q_MPOINT,  W_MWHEEL,  KC_E,      KC_R,      KC_T,      KC_Y,      KC_U,      KC_I,      KC_O,      KC_SCLN,   KC_DEL,  \
-    KC_LSFT,   A_CTL,     S_GUI,     D_ALT,     F_FN,      KC_G,      KC_H,      J_FN,      K_ALT,     L_GUI,     P_CTL,     KC_RSFT, \
-    COMP_UML,  KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,      KC_N,      KC_M,      KC_COMM,   KC_DOT,    KC_SLSH,   COMP_UML,\
-                                                APP_NUM,   MINS_SYM,  SPC_SYM,   ENT_NUM \
+  [_QWERTY_RIGHT] = LAYOUT_default(
+    KC_ESC,    MO(_NUM),   _______,   _______,   _______,   _______,   KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      KC_BSPC, \
+    KC_LALT,   MO(_SYM),   _______,   _______,   _______,   _______,   KC_T,      KC_R,      KC_E,      KC_O,      KC_SCLN,   KC_DEL,  \
+    KC_LSFT,   MO(_FN),    _______,   _______,   _______,   _______,   KC_G,      KC_F,      KC_D,      KC_S,      KC_A,      KC_RSFT, \
+    KC_LCTL,   KC_LGUI, MO(_MPOINT),MO(_MWHEEL), _______,   _______,   KC_N,      KC_M,      KC_COMM,   KC_DOT,    KC_SLSH,   COMP_UML, \
+                                                 KC_APP,    MO(_FN),   SPC_LEFT,  ENT_NAV \
+  ),
+
+  [_QWERTY_LEFT] = LAYOUT_default(
+    KC_ESC,    MO(_NUM),  _______,   _______,   _______,   _______,   KC_6,      KC_7,      KC_8,      KC_9,      KC_0,      KC_ESC,   \
+    KC_LALT,   MO(_SYM),  _______,   _______,   _______,   _______,   KC_Y,      KC_U,      KC_I,      KC_W,      KC_Q,      KC_TAB,   \
+    KC_LSFT,   MO(_FN),   _______,   _______,   _______,   _______,   KC_H,      KC_J,      KC_K,      KC_L,      KC_P,      KC_RSFT,  \
+    KC_LCTL,   KC_LGUI,   _______,   _______,   _______,   _______,   KC_B,      KC_V,      KC_C,      KC_X,      KC_Z,      COMP_UML, \
+                                                _______,   _______,   _______,   _______ \
   ),
 
   [_FN] = LAYOUT_default(
-    _______,   KC_F1,     KC_F2,     KC_F3,     KC_F4,     KC_F5,     KC_F6,     KC_F7,     KC_F8,     KC_F9,     KC_F10,    _______, \
-    KC_CAPS,   KC_F11,    KC_F12,    KC_NO,     KC_BRIU,  OSL(_TEXT), _______,   _______,   KC_UP,     KC_PGUP,   KC_PGDN,   KC_INS,  \
-    _______,   KC_NUM,    KC_PSCR,   KC_NO,     KC_BRID,   _______,   KC_HOME,   KC_LEFT,   KC_DOWN,   KC_RIGHT,  KC_END,    KC_ENT,  \
-    QK_BOOT,   CTL_MINS,  CTL_PLUS,  KC_MPRV,   KC_MPLY,   KC_MNXT,   CTL_PGUP,  CTL_PGDN,  KC_VOLD,   KC_VOLU,   KC_MUTE,   TG(_NAV),\
-                                                _______,   KC_MINS,   KC_SPC,    KC_ENT  \
+    QK_BOOT,   _______,   _______,   _______,   _______,   _______,   KC_F1,     KC_F2,     KC_F3,     KC_F4,     KC_F5,     KC_F6,   \
+    KC_LALT,   _______,   _______,   _______,   _______, OSL(_TEXT),  KC_F7,     KC_F8,     KC_F9,     KC_F10,    KC_F11,    KC_F12,  \
+    KC_CAPS,   _______,   _______,   _______,   _______,   _______,   KC_PSCR,   KC_NO,     KC_MPRV,   KC_MPLY,   KC_MNXT,   KC_CAPS, \
+    KC_LCTL,   _______,   _______,   _______,   _______,   _______,   CTL_MINS,  CTL_PLUS,  KC_VOLD,   KC_VOLU,   KC_MUTE,   KC_INS,  \
+                                                _______,   _______,   KC_BRID,   KC_BRIU \
   ),
 
   [_NAV] = LAYOUT_default(
-   TG(_NAV),   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
-    _______,   _______,   _______,   KC_W,      _______,   _______,   _______,   _______,   KC_UP,     KC_PGUP,   KC_PGDN,   KC_DEL,  \
-    _______,   KC_ESC,    KC_A,      KC_S,      KC_D,      _______,   KC_HOME,   KC_LEFT,   KC_DOWN,   KC_RIGHT,  KC_END,    KC_ENT,  \
-    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   TG(_NAV),\
-                                                KC_SPC,    KC_ENT,    _______,   _______  \
+    KC_ESC,    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_BSPC, \
+    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_UP,     KC_PGUP,   KC_PGDN,   KC_DEL,  \
+    _______,   _______,   _______,   _______,   _______,   _______,   KC_HOME,   KC_LEFT,   KC_DOWN,   KC_RIGHT,  KC_END,    KC_CAPS, \
+    _______,   _______,   _______,   _______,   _______,   _______,   CTL_PGUP,  CTL_PGDN,  _______,   _______,   _______,   KC_INS,  \
+                                                _______,   _______,   _______,   _______  \
   ),
 
   [_MPOINT] = LAYOUT_default(
@@ -92,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_MS_U,   _______,   _______,   _______, \
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_MS_L,   KC_MS_D,   KC_MS_R,   _______,   _______, \
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
-                                                KC_BTN1,   KC_BTN2,   KC_BTN1,   KC_BTN2 \
+                                                _______,   _______,   KC_BTN1,   KC_BTN2 \
   ),
 
   [_MWHEEL] = LAYOUT_default(
@@ -100,31 +97,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_WH_U,   _______,   _______,   _______, \
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_WH_L,   KC_WH_D,   KC_WH_R,   _______,   _______, \
     _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
-                                                _______,   _______,   _______,   _______ \
+                                                _______,   _______,   KC_BTN1,   KC_BTN2 \
   ),
 
   [_UMLAUTS] = LAYOUT_default(
-    TG(_UMLAUTS), M_DEGR, _______,   M_PARA,    _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, \
-    _______,   _______,   _______,   M_EURO,    _______,   _______,   M_YEN,     M_UMLU,    _______,   M_UMLO,    _______,   _______, \
-    _______,   M_UMLA,    M_ESZETT,  KC_DLR,    _______,   _______,   _______,   _______,   _______,   _______,   M_POUND,   _______, \
+    _______,   _______,   _______,   _______,   _______,   _______,   _______,   M_DEGR,    M_PARA,    _______,   _______,   _______, \
+    _______,   _______,   _______,   _______,   _______,   _______,   M_YEN,     M_UMLU,    M_EURO,    M_UMLO,    _______,   _______, \
+    _______,   _______,   _______,   _______,   _______,   _______,   M_POUND,   _______,   KC_DLR,    M_ESZETT,  M_UMLA,    _______, \
     KC_SCRL,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   M_LTLT,    M_GTGT,    _______,   KC_SCRL, \
                                                 _______,   _______,   _______,   _______ \
   ),
 
   [_NUM] = LAYOUT_default(
-    TG(_NUM),  KC_KP_1,   KC_KP_2,   KC_KP_3,   KC_KP_4,   KC_KP_5,   KC_KP_6,   KC_KP_7,   KC_KP_8,   KC_KP_9,   KC_EQL,    _______, \
-    _______,   KC_KP_4,   KC_KP_5,   KC_KP_6,   _______,   _______,   _______,   KC_KP_4,   KC_KP_5,   KC_KP_6,   KC_PLUS,   KC_ASTR, \
-    _______,   KC_KP_7,   KC_KP_8,   KC_KP_9,   _______,   _______,   KC_COLN,   KC_KP_1,   KC_KP_2,   KC_KP_3,   KC_MINS,   KC_QUOT, \
-    _______,   KC_KP_0,   _______,   _______,   _______,   _______,   _______,   KC_KP_0,   KC_COMM,   KC_DOT,    KC_SLSH,   KC_ENT,  \
+    _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_KP_7,   KC_KP_8,   KC_KP_9,   KC_EQL,    _______, \
+    _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_KP_4,   KC_KP_5,   KC_KP_6,   KC_PLUS,   KC_ASTR, \
+    _______,   _______,   _______,   _______,   _______,   _______,   KC_COLN,   KC_KP_1,   KC_KP_2,   KC_KP_3,   KC_MINS,   KC_QUOT, \
+    _______,   _______,   _______,   _______,   _______,   _______,   _______,   KC_KP_0,   KC_COMM,   KC_DOT,    KC_SLSH,   _______, \
                                                 _______,   _______,   _______,   _______ \
   ),
 
   [_SYM] = LAYOUT_default(
-    _______,   KC_EXLM,   KC_AT,     KC_HASH,   KC_DLR,    KC_PERC,   KC_CIRC,   KC_AMPR,   KC_LCBR,   KC_RCBR,   KC_EQL,    _______, \
-    _______,   KC_ASTR,   KC_PIPE,   KC_GRV,    KC_HASH,   KC_COMM,   KC_AT,     KC_HASH,   KC_LBRC,   KC_RBRC,   KC_PLUS,   KC_ASTR, \
-    _______,   KC_COLN,   KC_TILD,   KC_DQUO,   KC_MINS,   KC_DOT,    KC_EXLM,   KC_MINS,   KC_LPRN,   KC_RPRN,   KC_MINS,   KC_QUOT, \
-    _______,   KC_SCLN,   KC_BSLS,   KC_QUOT,   KC_UNDS,   KC_QUES,   KC_PERC,   KC_UNDS,   KC_LT,     KC_GT,     KC_SLSH,   _______, \
-                                                _______,   _______,   _______,   _______ \
+    _______,   _______,   _______,   _______,   _______,   _______,   KC_CIRC,   KC_AMPR,   KC_LCBR,   KC_RCBR,   KC_EQL,    KC_PERC, \
+    _______,   _______,   _______,   _______,   _______,   _______,   KC_PIPE,   KC_HASH,   KC_LBRC,   KC_RBRC,   KC_PLUS,   KC_GRV,  \
+    _______,   _______,   _______,   _______,   _______,   _______,   KC_TILD,   KC_MINS,   KC_LPRN,   KC_RPRN,   KC_ASTR,   KC_DQUO, \
+    _______,   _______,   _______,   _______,   _______,   _______,   KC_BSLS,   KC_UNDS,   KC_LT,     KC_GT,     KC_SLSH,   KC_QUOT, \
+                                                _______,   _______,   KC_SPC,    KC_ENT \
   ),
 
   [_TEXT] = LAYOUT_default(
