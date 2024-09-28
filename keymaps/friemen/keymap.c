@@ -49,7 +49,7 @@ enum custom_keycodes {
 #define K_ALT      MT(MOD_LALT, KC_K)
 #define L_GUI      MT(MOD_RGUI, KC_L)
 #define P_CTL      MT(MOD_RCTL, KC_P)
-#define QUOT_RSFT  MT(MOD_RSFT, KC_QUOT)
+#define MINS_RSFT  MT(MOD_RSFT, KC_MINS)
 #define CTL_PLUS   LCTL(KC_PLUS)
 #define CTL_MINS   LCTL(KC_MINUS)
 #define CTL_PGUP   LCTL(KC_PGUP)
@@ -57,7 +57,7 @@ enum custom_keycodes {
 #define APP_NUM    LT(_NUM, KC_APP)
 #define MINS_SYM   LT(_SYM, KC_MINS)
 #define SPC_SYM    LT(_SYM, KC_SPC)
-#define ENT_NUM    LT(_NUM, KC_ENT)
+#define ENT_NAV    LT(_NAV, KC_ENT)
 #define X_COMPOSE  X_SCRL    // this must match the setxkbmap -option "compose:sclk"
 
 
@@ -68,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,    Q_MPOINT,  W_MWHEEL,  KC_E,      KC_R,      KC_T,      KC_Y,      KC_U,      KC_I,      KC_O,      KC_SCLN,   KC_DEL,  \
     KC_LSFT,   A_CTL,     S_GUI,     D_ALT,     F_FN,      KC_G,      KC_H,      J_FN,      K_ALT,     L_GUI,     P_CTL,     KC_RSFT, \
     COMP_UML,  KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,      KC_N,      KC_M,      KC_COMM,   KC_DOT,    KC_SLSH,   COMP_UML,\
-                                                APP_NUM,   MINS_SYM,  SPC_SYM,   ENT_NUM \
+                                                APP_NUM,   MINS_SYM,  SPC_SYM,   ENT_NAV \
   ),
 
   [_FN] = LAYOUT_default(
