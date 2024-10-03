@@ -255,7 +255,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   /* send_string(state_string); */
 
   // turn numlock on in _NUM layer
-  bool numlock = (host_keyboard_leds() & (1 << USB_LED_NUM_LOCK));
+  bool numlock = host_keyboard_led_state().num_lock;
   if (state & (1 << _NUM)) {
     if (!numlock) {
       SEND_STRING(SS_TAP(X_NUM));

@@ -11,14 +11,6 @@
 /* Permissive hold: Makes tap and hold keys work better for fast typists, or when you’ve set TAPPING_TERM to a high value. */
 #define PERMISSIVE_HOLD
 
-/* Ignore Mod Tap Interrupt: Alters the behaviour of tap and hold keys in a similar but different way than Permissive hold. */
-#define IGNORE_MOD_TAP_INTERRUPT
-
-// Deprecated, see docs/ChangeLog/20230226.md
-/* Tapping Force Hold: Allows you to have the given keycode repeat when tapping and then holding the modifier key for a second time. */
-// WATCHOUT might break tapping toggle
-/* #define TAPPING_FORCE_HOLD */
-
 /* Qick Tap Term */
 #define QUICK_TAP_TERM 50
 
